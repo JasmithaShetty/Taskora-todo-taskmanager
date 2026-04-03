@@ -54,7 +54,9 @@ git clone https://github.com/JasmithaShetty/Taskora-todo-taskmanager.git
 open register.html
 
 ## 🌐 Live Demo
-🚧 Coming Soon
+```bash
+https://taskora-todo-taskmanager.vercel.app/
+```
 
 ## 👨‍💻 Author
 Jasmitha D Shetty

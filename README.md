@@ -44,15 +44,15 @@ ToDo_profilemngmnt/
 
 ## 🚀 How to Run Locally
 
-1. Clone the repository
+1. Clone the repository:
 ```bash
 git clone https://github.com/JasmithaShetty/Taskora-todo-taskmanager.git
-2. Open the project folder
-3. Open register.html in your browser
+Open the project folder
+Run the application:
+open register.html
 
 🌐 Live Demo
-
-(Add after deployment)
+🚧 Coming Soon
 
 👨‍💻 Author
 Jasmitha D Shetty

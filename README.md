@@ -47,6 +47,7 @@ ToDo_profilemngmnt/
 1. Clone the repository:
 ```bash
 git clone https://github.com/JasmithaShetty/Taskora-todo-taskmanager.git
+
 Open the project folder
 Run the application:
 open register.html

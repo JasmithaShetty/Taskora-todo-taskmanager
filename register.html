@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- title -->
+  <title>Taskora | Sign Up</title>
+  <link rel="icon" type='image/x-icon' href="https://img.icons8.com/plasticine/1200/work-authorisation.jpg">
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/register.css">
+  <!-- script -->
+  <script src="/js/register.js"></script>
+  <script src="js/common.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <!-- left side -->
+  <div class="left">
+    <img src="https://cdn.vectorstock.com/i/preview-1x/60/40/hacker-attack-concept-database-security-phishing-vector-47406040.jpg" alt="image">
+    <p class="login-text">Already using Taskora?
+      <a href="login.html" title="Login to an existing account">Login</a>
+    </p>
+  </div>
+
+  <!-- right side -->
+  <div class="right">
+    <h2>Create Account</h2>
+    <form id="registrationForm" action=# method="post">
+      <!-- username -->
+      <div class="input-box">
+        <label for="username"><i class="fa fa-user left-icon"></i></label>
+        <input type="text" id="username" name="username" placeholder="Username" title="Enter your name" required>
+      </div>
+      <!-- email -->
+      <div class="input-box">
+        <label for="email"><i class="fa fa-envelope left-icon"></i></label>
+        <input type="email" id="email" name="email" placeholder="Email" title="Please enter a valid email" required>
+        <small id="email-error">Invalid email (e.g., name@example.com)</small>
+      </div>
+      <!-- phone number -->
+      <div class="input-box">
+        <label for="phone"><i class="fa fa-phone left-icon"></i></label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" title="Please enter a valid phone number" required>
+      <span id="phone-error" class="error-msg"></span>
+      </div>
+      <div class="input-box">
+        <label for="gender"><i class="fa fa-venus-mars left-icon"></i></label>
+        <select id="gender" name="gender" title="Select your gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="None">Prefer Not to say</option>
+        </select>
+      </div>
+      <!-- password -->
+      <div class="input-box">
+        <label for="password"><i class="fa fa-lock left-icon"></i></label>
+        <input type="password" id="password" minlength="6" placeholder="Password" title="Set a password" oninput="checkStrength()">
+        <i class="fa fa-eye-slash right-icon" onclick="togglePassword('password', this)" title="View password"></i>
+        <div class="strength-container">
+          <div id="strength-bar"></div>
+        </div>
+        <small id="strength-text"></small>
+      </div>
+      <!-- confirm password -->
+       <div class="input-box">
+        <label for="confirmpassword"><i class="fa fa-lock left-icon" ></i></label>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" title="Confirm password"  required>
+        <i class="fa fa-eye-slash right-icon" onclick="togglePassword('confirmPassword', this)" title="View password" ></i>
+        <small id="match-error" >Passwords do not match!</small>
+      </div>
+      <!-- Profile -->
+      <div class="profile-box">
+        <i class="fa-solid fa-image-portrait left-icon"></i>
+        <div class="profile-options">
+          <label class="upload-btn" title="Upload your profile picture">Upload
+            <input type="file" id="profilePic" name="profilePic" accept=".jpg, .png" hidden>
+          </label>
+          <span id="file-name" >No file chosen</span>
+          <small class="or-text">OR</small>
+          <input type="url" id="picture-url" name="profileUrl" placeholder="Image URL" title="Enter the url of your profile picture">
+        </div>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+<div id="notification"></div>
+</body>
+</html>

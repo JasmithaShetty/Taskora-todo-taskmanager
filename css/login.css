@@ -1,0 +1,228 @@
+/* 🎨 THEME COLORS UPDATED TO MATCH PROFILE PAGE */
+:root {
+    --primary: #3498db;
+    --primary-dark: #2980b9;
+    --primary-light: #eef5ff;
+
+    --text-main: #333;
+    --text-muted: #666;
+
+    --bg-light: #f4f7f6;
+}
+
+/* --- GLOBAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    font-family:'Segoe UI';
+}
+
+/* --- BACKGROUND DECOR --- */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 30px solid rgba(52, 152, 219, 0.1);
+    z-index: 1;
+    animation: float 8s ease-in-out infinite;
+}
+body::before { width: 300px; height: 300px; top: -50px; right: -30px; }
+body::after { width: 180px; height: 180px; bottom: 40px; left: -30px; animation-delay: 2s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* --- CONTAINER --- */
+.container {
+    display: flex;
+    max-width: 900px;
+    width: 95%;
+    height: 520px;
+    background: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* --- LEFT PANEL --- */
+.left {
+    flex: 1.4;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 50px 80px 50px 50px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 120px 280px 0;
+}
+
+.left h2 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* --- INPUTS --- */
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.input-box input {
+    width: 100%;
+    height: 48px;
+    padding: 0 45px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--text-main);
+}
+
+.input-box i.left-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+}
+
+.right-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* --- LOGIN BUTTON (GLASS BLUE STYLE) --- */
+.login-btn {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    padding: 14px;
+
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--primary-dark);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.25);
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #ffffff;
+    transform: scale(1.04);
+    box-shadow: 0 12px 35px rgba(52, 152, 219, 0.35);
+}
+
+/* --- RIGHT PANEL --- */
+.right {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background: #ffffff;
+}
+
+.right h2 {
+    color: var(--text-main);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.right p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* --- SIGNUP BUTTON --- */
+.signup-btn {
+    width: 160px;
+    padding: 12px 0;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.signup-btn:hover {
+    background: var(--primary-dark);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* --- TOAST --- */
+#notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    background: #2ecc71;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.toast.error { background: #ff4d4d; }
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

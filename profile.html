@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskora | Profile</title>
+    <link rel="icon" type='image/x-icon' href="https://img.icons8.com/plasticine/1200/work-authorisation.jpg">
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <div id="notification" class="toast-container"></div>
+    <!-- navbar -->
+    <nav class="main-nav">
+        
+        <div class="nav-links">
+            <a href="#view" class="nav-item active" id="tab-view" onclick="toggleEdit(false)"title="View Account Details"><i class="fas fa-user"></i> My Profile
+            </a>
+            <a href="#edit" class="nav-item" id="tab-edit" onclick="toggleEdit(true)"><i class="fas fa-pen"></i> Edit Profile
+            </a>
+            <a href="todo.html" class="nav-item" id="dashboardBtn"><i class="fas fa-tasks"></i>My Tasks
+            </a>
+            <a href="#" class="nav-item logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </nav>
+    <!-- container -->
+     <main class="content-wrapper">
+        <div class="upload-card">      
+            <div class="profile-img-container">
+                <img src="" alt="Profile Preview" id="profileDisplay">
+                <button id="edit-pic-btn" class="overlay-pencil" style="display: none;" onclick="togglePicMenu()">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
+                
+                <div id="pic-options-menu" class="dropdown-menu" style="display: none;">
+                    <div class="menu-header">
+                        <span class="menu-title">Update Profile Picture</span>
+                        <i class="fa-solid fa-xmark close-menu" onclick="togglePicMenu()"></i>
+                    </div>
+                    <div class="url-input-group">
+                        <input type="text" id="urlInput" placeholder="Paste Image URL...">
+                        <button onclick="applyUrl()">Apply</button>
+                    </div>
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        <i class="fa-solid fa-upload"></i> Upload
+                    </button>
+                </div>
+            </div>
+            <!-- view section -->
+            <div id="view-section">
+                <h2 id="view-username" class="upload-title">Username</h2>
+                
+                <p class="limit-text" id="view-email">example@example.com</p>
+                <div class="info-group">
+                    <p><strong>Phone:</strong> <span id="view-phone">-</span></p>
+                    <p><strong>Gender:</strong> <span id="view-gender">-</span></p>
+                    <div class="pass-display-row">
+                        <strong>Password:</strong> 
+                        <span id="view-password" class="dots"></span>
+                        <i class="fa-solid fa-eye-slash view-toggle" onclick="toggleViewPassword(this)"></i>
+                    </div>
+                </div><br>
+                <button class="btn btn-blue" onclick="toggleEdit(true)">Edit My Details</button>
+            </div>
+            <!-- edit section -->
+            <div id="edit-section" style="display: none;">
+                <h2 class="upload-title">Update Profile</h2>
+                <input type="file" id="fileInput" hidden accept=".jpg, .jpeg, .png" onchange="previewImage(this)">
+                
+                <div class="edit-fields">
+                    <div class="input-row">
+                        <i class="fa-solid fa-user field-icon"></i>
+                        <input type="text" id="edit-username" class="styled-input" placeholder="Username" disabled>
+                        <button class="edit-icon-btn" onclick="enableField('edit-username')"><i class="fa-solid fa-pencil"></i></button>
+                    </div>
+                    
+                    <div class="input-row">
+                        <i class="fa-solid fa-envelope field-icon"></i>
+                        <input type="email" id="edit-email" class="styled-input" placeholder="Email" disabled>
+                    </div>
+
+                    <div class="input-row">
+                        <i class="fa-solid fa-phone field-icon"></i>
+                        <input type="text" id="edit-phone" class="styled-input" placeholder="Phone (10 digits)" disabled maxlength="10">
+                        <button class="edit-icon-btn" onclick="enableField('edit-phone')"><i class="fa-solid fa-pencil"></i></button>
+                    </div>
+                    <span id="phone-error" class="error-msg"></span>
+
+                    <div class="input-row">
+                        <i class="fa-solid fa-venus-mars field-icon"></i>
+                        <select id="edit-gender" class="styled-input" disabled>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <button class="edit-icon-btn" onclick="enableField('edit-gender')">
+                            <i class="fa-solid fa-pencil"></i>
+                        </button>
+                    </div>
+
+                    <div class="input-row">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="edit-password" class="styled-input" placeholder="New Password" disabled>
+                        <i class="fa-solid fa-eye-slash pass-eye" onclick="togglePassword('edit-password', this)" title="View password"></i>
+                        
+                        <button class="edit-icon-btn" onclick="enableField('edit-password')"><i class="fa-solid fa-pencil"></i></button>
+                    </div>
+                    <span id="pass-error" class="error-msg"></span>
+
+                    <div class="input-row">
+                        <i class="fa-solid fa-shield-halved field-icon"></i>
+                        <input type="password" id="edit-confirm-password" class="styled-input" placeholder="Confirm Password" disabled>
+                        <i class="fa-solid fa-eye-slash pass-eye" onclick="togglePassword('edit-confirm-password', this)"></i>
+                        <button class="edit-icon-btn" onclick="enableField('edit-confirm-password')">
+                            <i class="fa-solid fa-pencil"></i></button>
+                    </div>
+                    <span id="match-error" class="error-msg"></span>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-blue" id="saveBtn" onclick="saveChanges()">Save Changes</button>
+                    <button class="btn-text" onclick="toggleEdit(false)">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="main-footer">
+    <p>&copy; 2026 Taskora. All rights reserved.</p>
+    <p class="tagline">
+        Organize your day, effortlessly.
+    </p>
+    <p>Designed & Developed by <b>Jasmitha D Shetty</b></p>
+
+    <div class="footer-socials">
+        <a href="https://github.com/JasmithaShetty" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/jasmitha-d-shetty/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+</footer>
+    <script src="/js/profile.js"></script>
+    <script src="/js/common.js"></script>
+</body>
+</html>
